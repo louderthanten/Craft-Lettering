@@ -65,7 +65,7 @@ class LetteringTwigExtension extends \Twig_Extension
         if (!$text || strlen($text) === 0 || !method_exists(craft()->lettering, $class)) {
             return $text;
         }
-
+        $text = htmlentities($text);
         $dom = new LetteringDom();
         $dom->loadHTML(mb_convert_encoding('<div id="workingNode">'.$text.'</div>', 'HTML-ENTITIES', $this->encoding));
 
